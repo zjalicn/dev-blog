@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import AboutImage from '../../assets/about.png';
 import SectionTitle from '@/components/shared/SectionTitle.astro';
 
 interface Props {
@@ -8,7 +9,6 @@ interface Props {
 }
 
 const {
-  imageSrc = '/src/assets/about.png',
   paragraphs = [
     "I have nearly 5 years of experience building scalable web applications using technologies like Angular, React, Node.js, .NET, and AWS. I've designed responsive frontend UIs, spun up and refactored new REST API services, integrated with complex microservice architectures. I enjoy working in collaborative environments, solving new challenges, and exploring new technologies.",
     "In my free time, I enjoy playing live music, learning new skills (this year it's Spanish), traveling and experiencing new cultures."
@@ -22,11 +22,10 @@ const {
   <div class="flex flex-wrap">
     <div class="w-full lg:w-1/2 lg:p-8" data-animate>
       <div class="flex items-center justify-center">
-        <Image
-          src={imageSrc}
+        <img
+          src={AboutImage.src}
           alt="About section image"
-          width={500}
-          height={300}
+          width={1000}
           class="rounded-2xl"
         />
       </div>

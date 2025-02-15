@@ -50,7 +50,7 @@ const EXPERIENCES: Experience[] = [
     {EXPERIENCES.map((experience, index) => (
       <div class="mb-12 flex flex-wrap lg:justify-center group" data-animate>
         <div class="w-full lg:w-1/4">
-          <div class="flex items-center gap-2 mb-2 text-sm text-neutral-400 group-hover:text-purple-400 transition-colors duration-200">
+          <div class="flex items-center gap-2 mb-2 text-sm text-purple-400 transition-colors duration-200">
             <Calendar class="w-4 h-4" />
             <p>{experience.year}</p>
           </div>
@@ -60,7 +60,7 @@ const EXPERIENCES: Experience[] = [
           <div class="flex items-start gap-2 mb-2">
             <Briefcase class="w-5 h-5 mt-1 text-purple-400" />
             <div>
-              <h6 class="font-semibold group-hover:text-purple-400 transition-colors duration-200">
+              <h6 class="font-semibold text-purple-400 transition-colors duration-200">
                 {experience.role}
               </h6>
               <div class="flex items-center gap-2 text-sm text-purple-100">
@@ -70,7 +70,7 @@ const EXPERIENCES: Experience[] = [
             </div>
           </div>
           
-          <p class="mb-4 text-neutral-400 mt-2 group-hover:text-neutral-300 transition-colors duration-200">
+          <p class="mb-4 mt-2 text-neutral-300 transition-colors duration-200">
             {experience.description}
           </p>
           

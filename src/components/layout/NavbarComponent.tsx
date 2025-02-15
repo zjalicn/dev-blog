@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Trees, Github, File, Menu } from "lucide-react";
+import { Linkedin, Github, Menu, FileText } from "lucide-react";
 
 const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/in/zjalicn",
@@ -10,8 +10,7 @@ const SOCIAL_LINKS = {
 const NAV_ITEMS = [
   { name: "Home", path: "/" },
   { name: "Blog", path: "/blog" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Projects", path: "/projects" },
 ];
 
 const NavbarComponent = () => {
@@ -44,8 +43,11 @@ const NavbarComponent = () => {
     <nav className="mb-20 flex items-center justify-between py-6">
       {/* Logo/Home link */}
       <div className="flex flex-shrink-0 items-center">
-        <a href="/" className="text-xl font-bold tracking-tight">
-          YourName
+        <a
+          href="/"
+          className="text-xl font-bold text-white hover:text-purple-400 transition-colors duration-200"
+        >
+          createdbyniko.
         </a>
       </div>
 
@@ -72,16 +74,16 @@ const NavbarComponent = () => {
           href={SOCIAL_LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-purple-400 transition-colors duration-200"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
           aria-label="LinkedIn Profile"
         >
-          <Trees className="w-6 h-6" />
+          <Linkedin className="w-6 h-6" />
         </a>
         <a
           href={SOCIAL_LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-purple-400 transition-colors duration-200"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
           aria-label="GitHub Profile"
         >
           <Github className="w-6 h-6" />
@@ -90,10 +92,10 @@ const NavbarComponent = () => {
           href={SOCIAL_LINKS.resume}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-purple-400 transition-colors duration-200"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
           aria-label="Download Resume"
         >
-          <File className="w-6 h-6" />
+          <FileText className="w-6 h-6" />
         </a>
       </div>
 
