@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import { HERO_CONTENT } from '@/consts';
+import { Image } from "astro:assets";
+import { HERO_CONTENT } from "@/consts";
 
 interface Props {
   name?: string;
@@ -11,33 +11,14 @@ interface Props {
 const {
   name = "Nikola Zjalic",
   title = "Full Stack Developer",
-  content = HERO_CONTENT
+  content = HERO_CONTENT,
 } = Astro.props;
 ---
 
 <div class="border-b border-neutral-900 pb-4 lg:mb-36">
   <div class="flex flex-wrap">
-    <div class="w-full lg:w-1/2">
-      <div class="flex flex-col items-center lg:items-start">
-        <h1 
-          class="pb-8 text-6xl font-thin text-white tracking-tight lg:mt-16 lg:text-8xl animate-fade-in"
-        >
-          {name}
-        </h1>
-        <span 
-          class="bg-gradient-to-r from-red-400 via-purple-400 to-blue-500 bg-clip-text text-3xl tracking-tight text-transparent animate-slide-in"
-        >
-          {title}
-        </span>
-        <p 
-          class="my-2 max-w-xl py-6 font-light tracking-tighter text-lg animate-fade-up"
-        >
-          {content}
-        </p>
-      </div>
-    </div>
     <div class="w-full lg:w-1/2 lg:p-8">
-      <div class="flex justify-center">
+      <div class="flex justify-center mb-8">
         <Image
           src="/src/assets/profile.png"
           alt={name}
@@ -47,23 +28,58 @@ const {
         />
       </div>
     </div>
+    <div class="w-full lg:w-1/2">
+      <div class="flex flex-col items-center lg:items-start">
+        <h1
+          class="pb-4 text-6xl font-thin text-white tracking-tight lg:mt-16 lg:text-8xl animate-fade-in"
+        >
+          {name}
+        </h1>
+        <span
+          class="ml-2 bg-gradient-to-r from-red-400 via-purple-400 to-blue-500 bg-clip-text text-3xl tracking-tight text-transparent animate-slide-in"
+        >
+          {title}
+        </span>
+        <p
+          class="ml-2 max-w-xl py-6 font-light tracking-tighter text-lg animate-fade-up"
+        >
+          {content}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
 <style>
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slide-in {
-    from { opacity: 0; transform: translateX(-100px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .animate-fade-in {

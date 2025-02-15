@@ -2,6 +2,7 @@
 import { Calendar, Building2, Briefcase } from 'lucide-react';
 import SectionTitle from '@/components/shared/SectionTitle.astro';
 import TechTag from '@/components/shared/TechTag.astro';
+import { calculateTotalExperience } from '../../utils/calculateExperience';
 
 interface Experience {
   year: string;
@@ -33,18 +34,23 @@ const EXPERIENCES: Experience[] = [
     description: `Created responsive components and webpages for Blizzard Entertainment and Mazda e-commerce stores using React and Javascript respectively. Managed product data using Magento e-commerce platform and worked in a cross collaborative team using Jira to manage tasks.`,
     technologies: ["Javascript", "React", "MySQL"],
   },
-  {
-    year: "2017-09 - 2018-12",
-    role: "Full Stack Developer",
-    company: "Cor.AI",
-    description: `Engineered a cloud-based cardiac rehabilitation app using HTML, CSS, Node.js, MySQL, and various JS frameworks featuring an interactive dashboard and IBM Watson chatbot to dynamically customize content and data presentation based on user prompts.`,
-    technologies: ["HTML/CSS", "Node.js", "MySQL"],
-  }
+  // {
+  //   year: "2017-09 - 2018-12",
+  //   role: "Full Stack Developer",
+  //   company: "Cor.AI",
+  //   description: `Engineered a cloud-based cardiac rehabilitation app using HTML, CSS, Node.js, MySQL, and various JS frameworks featuring an interactive dashboard and IBM Watson chatbot to dynamically customize content and data presentation based on user prompts.`,
+  //   technologies: ["HTML/CSS", "Node.js", "MySQL"],
+  // }
 ];
+
+const totalExperience = calculateTotalExperience(EXPERIENCES);
 ---
 
 <div class="border-b border-neutral-900 pb-4">
-  <SectionTitle title="Experience" />
+  <SectionTitle 
+    title="Professional Experience" 
+    subtitle={`${totalExperience}`}
+  />
   
   <div>
     {EXPERIENCES.map((experience, index) => (
@@ -57,20 +63,20 @@ const EXPERIENCES: Experience[] = [
         </div>
         
         <div class="w-full max-w-xl lg:w-3/4">
-          <div class="flex items-start gap-2 mb-2">
+          <div class="flex items-start mb-2">
+            <div class="flex flex-col gap-4">
+              <h6 class="flex items-center gap-2 font-semibold text-purple-400 transition-colors duration-200">
             <Briefcase class="w-5 h-5 mt-1 text-purple-400" />
-            <div>
-              <h6 class="font-semibold text-purple-400 transition-colors duration-200">
                 {experience.role}
               </h6>
               <div class="flex items-center gap-2 text-sm text-purple-100">
                 <Building2 class="w-4 h-4" />
-                <span>{experience.company}</span>
+                {experience.company}
               </div>
             </div>
           </div>
           
-          <p class="mb-4 mt-2 text-neutral-300 transition-colors duration-200">
+          <p class="my-8 text-neutral-300 transition-colors duration-200">
             {experience.description}
           </p>
           
