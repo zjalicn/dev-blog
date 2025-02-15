@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import AboutImage from '../../assets/about.png';
-import SectionTitle from '@/components/shared/SectionTitle.astro';
+import { Image } from "astro:assets";
+import AboutImage from "../../assets/about.png";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
 
 interface Props {
   imageSrc?: string;
@@ -11,14 +11,14 @@ interface Props {
 const {
   paragraphs = [
     "I have nearly 5 years of experience building scalable web applications using technologies like Angular, React, Node.js, .NET, and AWS. I've designed responsive frontend UIs, spun up and refactored new REST API services, integrated with complex microservice architectures. I enjoy working in collaborative environments, solving new challenges, and exploring new technologies.",
-    "In my free time, I enjoy playing live music, learning new skills (this year it's Spanish), traveling and experiencing new cultures."
-  ]
+    "In my free time, I enjoy playing live music, learning new skills (el año pasado aprendí español, and this year my goal is to launch 10 apps), traveling and experiencing new cultures.",
+  ],
 } = Astro.props;
 ---
 
 <div class="border-b border-neutral-900 pb-4" id="about">
   <SectionTitle title="About" />
-  
+
   <div class="flex flex-wrap">
     <div class="w-full lg:w-1/2 lg:p-8" data-animate>
       <div class="flex items-center justify-center">
@@ -32,11 +32,11 @@ const {
     </div>
     <div class="w-full lg:w-1/2" data-animate>
       <div class="flex justify-center lg:justify-start flex-col">
-        {paragraphs.map(paragraph => (
-          <p class="my-2 max-w-xl py-6 text-lg">
-            {paragraph}
-          </p>
-        ))}
+        {
+          paragraphs.map((paragraph) => (
+            <p class="my-2 max-w-xl py-6 text-lg">{paragraph}</p>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -46,20 +46,20 @@ const {
   // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.2,
-    rootMargin: '50px'
+    rootMargin: "50px",
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
+        entry.target.classList.add("animate-in");
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
   // Observe all elements with data-animate attribute
-  document.querySelectorAll('[data-animate]').forEach((element) => {
+  document.querySelectorAll("[data-animate]").forEach((element) => {
     observer.observe(element);
   });
 </script>
@@ -68,7 +68,9 @@ const {
   [data-animate] {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   [data-animate].animate-in {
