@@ -4,7 +4,8 @@ import { Linkedin, Github, Menu, FileText } from "lucide-react";
 const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/in/zjalicn",
   github: "https://www.github.com/zjalicn",
-  resume: "https://example.com/your-resume.pdf",
+  resume:
+    "https://fg92krreal8mypv5.public.blob.vercel-storage.com/nikola-zjalic-cv-UEbT0iVY9pHTRUQAIyXqDCjukPuErU.pdf",
 };
 
 const NAV_ITEMS = [

@@ -13,4 +13,7 @@ export default defineConfig({
     react(), // Required for Lucide icons
     tailwind(),
   ],
+  pages: {
+    "/404": "src/pages/404.astro",
+  },
 });

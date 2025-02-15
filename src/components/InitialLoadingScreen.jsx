@@ -78,7 +78,7 @@ export const InitialLoadingScreen = () => {
                 }}
                 className="text-6xl font-bold text-transparent bg-clip-text 
                            bg-gradient-to-r from-white via-purple-200 to-white 
-                           bg-[length:200%_100%] animate-shine"
+                           bg-[length:200%_100%] animate-shine p-8"
               >
                 createdbyniko.
               </motion.h1>
