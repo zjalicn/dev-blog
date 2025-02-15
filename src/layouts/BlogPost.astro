@@ -1,8 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../components/layout/BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -10,76 +8,126 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+<BaseLayout title={title} description={description}>
+	<article class="container mx-auto px-4 py-16 mt-16">
+		<div class="max-w-3xl mx-auto">
+			{heroImage && (
+				<div class="text-center mb-8">
+					<div class="relative w-full max-w-3xl mx-auto">
+						<img
+							src={heroImage}
+							alt=""
+							class="rounded-xl mx-auto"
+							style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
+						/>
 					</div>
+				</div>
+			)}
+			
+			<div class="prose prose-invert mx-auto text-center">
+				<div class="mb-8 pb-8 border-b border-neutral-800">
+					<div class="text-neutral-400 mb-2">
+						<FormattedDate date={pubDate} />
+						{
+							updatedDate && (
+								<div class="italic">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)
+						}
+					</div>
+					<h1 class="text-4xl font-bold text-white mb-0">{title}</h1>
+				</div>
+				
+				<div class="text-center">
 					<slot />
 				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	/* Blog Content Styles */
+	:global(.prose) {
+		max-width: 720px;
+		color: #d4d4d4;
+	}
+	:global(.prose h1),
+	:global(.prose h2),
+	:global(.prose h3),
+	:global(.prose h4),
+	:global(.prose h5),
+	:global(.prose h6) {
+		color: white;
+		margin-top: 2em;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+	:global(.prose p) {
+		margin-bottom: 1.5em;
+		text-align: center;
+	}
+	:global(.prose strong) {
+		color: white;
+	}
+	:global(.prose a) {
+		color: #a855f7;
+		text-decoration: none;
+	}
+	:global(.prose a:hover) {
+		text-decoration: underline;
+	}
+	:global(.prose code) {
+		background-color: #262626;
+		padding: 0.2em 0.4em;
+		border-radius: 0.25em;
+		font-size: 0.875em;
+		color: #e5e5e5;
+	}
+	:global(.prose pre) {
+		background-color: #262626;
+		padding: 1.5em;
+		border-radius: 0.5em;
+		overflow-x: auto;
+		text-align: left;
+	}
+	:global(.prose pre code) {
+		background-color: transparent;
+		padding: 0;
+		border-radius: 0;
+		color: inherit;
+	}
+	:global(.prose blockquote) {
+		border-left: 4px solid #a855f7;
+		padding-left: 1em;
+		color: #a3a3a3;
+		text-align: center;
+		margin: 0 auto;
+	}
+	:global(.prose ul),
+	:global(.prose ol) {
+		padding-left: 1.5em;
+		margin-bottom: 1.5em;
+		text-align: left;
+		max-width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	:global(.prose li) {
+		margin-bottom: 0.5em;
+	}
+	:global(.prose img) {
+		border-radius: 0.5em;
+		margin: 2em auto;
+		display: block;
+	}
+	:global(.prose hr) {
+		border-color: #262626;
+		margin: 3em auto;
+	}
+	:global(.prose table) {
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>
