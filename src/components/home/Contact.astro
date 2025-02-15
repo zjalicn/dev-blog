@@ -1,0 +1,162 @@
+---
+// Contact.astro
+import { MapPin, Phone, Mail, Linkedin, Github } from 'lucide-react';
+import SectionTitle from '@/components/shared/SectionTitle.astro';
+
+interface ContactInfo {
+  address: string;
+  phoneNo: string;
+  email: string;
+  linkedin: string;
+  github: string;
+}
+
+const CONTACT: ContactInfo = {
+  address: "Canada 🇨🇦",
+  phoneNo: "+1 (226) 975 3182",
+  email: "nzjalic@gmail.com",
+  linkedin: "https://www.linkedin.com/in/zjalicn",
+  github: "https://github.com/zjalicn",
+};
+
+interface ContactLink {
+  href: string;
+  icon: typeof Mail;
+  text: string;
+  newTab?: boolean;
+}
+
+const contactLinks: ContactLink[] = [
+  {
+    href: `mailto:${CONTACT.email}`,
+    icon: Mail,
+    text: CONTACT.email
+  },
+  {
+    href: CONTACT.linkedin,
+    icon: Linkedin,
+    text: "LinkedIn",
+    newTab: true
+  },
+  {
+    href: CONTACT.github,
+    icon: Github,
+    text: "GitHub",
+    newTab: true
+  }
+];
+---
+
+<div class="border-b border-neutral-900 pb-20">
+  <SectionTitle title="Contact" />
+  
+  <div class="flex flex-col items-center text-center tracking-tighter" data-animate>
+    <div class="flex items-center gap-2 my-4">
+      <MapPin class="w-5 h-5 text-purple-400" />
+      <p>{CONTACT.address}</p>
+    </div>
+
+    <div class="flex items-center gap-2 my-4">
+      <Phone class="w-5 h-5 text-purple-400" />
+      <p>{CONTACT.phoneNo}</p>
+    </div>
+
+    <div class="flex flex-col items-center gap-4 mt-8">
+      {contactLinks.map(({ href, icon: Icon, text, newTab }) => (
+        <a
+          href={href}
+          class="flex items-center gap-2 hover:text-purple-400 transition-colors duration-200"
+          {...newTab && { target: "_blank", rel: "noopener noreferrer" }}
+        >
+          <Icon class="w-5 h-5" />
+          {text}
+        </a>
+      ))}
+    </div>
+
+    <!-- Optional Contact Form -->
+    <form 
+      class="mt-12 w-full max-w-md space-y-4"
+      data-netlify="true"
+      name="contact"
+      method="POST"
+    >
+      <div class="space-y-2">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          class="w-full px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 
+                 focus:border-purple-400 focus:outline-none focus:ring-2 
+                 focus:ring-purple-400 focus:ring-opacity-50"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          class="w-full px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 
+                 focus:border-purple-400 focus:outline-none focus:ring-2 
+                 focus:ring-purple-400 focus:ring-opacity-50"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          rows="4"
+          class="w-full px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 
+                 focus:border-purple-400 focus:outline-none focus:ring-2 
+                 focus:ring-purple-400 focus:ring-opacity-50"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full px-4 py-2 text-white bg-purple-600 rounded-lg 
+               hover:bg-purple-700 focus:outline-none focus:ring-2 
+               focus:ring-purple-400 focus:ring-opacity-50 
+               transition-colors duration-200"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-animate].animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document.querySelectorAll('[data-animate]').forEach((element) => {
+    observer.observe(element);
+  });
+</script>

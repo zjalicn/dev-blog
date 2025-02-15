@@ -1,0 +1,134 @@
+---
+import { 
+  Trees, 
+  Box, 
+  FileCode2, 
+  Database, 
+  Server,
+  Coffee 
+} from 'lucide-react';
+import SectionTitle from '@/components/shared/SectionTitle.astro';
+
+const technologies = [
+  {
+    name: 'React',
+    Icon: Trees,
+    color: 'text-cyan-500',
+    hoverColor: 'hover:border-cyan-500',
+    duration: 2.5
+  },
+  {
+    name: 'Angular',
+    Icon: Box,
+    color: 'text-red-700',
+    hoverColor: 'hover:border-red-700',
+    duration: 3
+  },
+  {
+    name: 'TypeScript',
+    Icon: FileCode2,
+    color: 'text-sky-500',
+    hoverColor: 'hover:border-sky-500',
+    duration: 5
+  },
+  {
+    name: '.NET',
+    Icon: Server,
+    color: 'text-sky-500',
+    hoverColor: 'hover:border-sky-500',
+    duration: 2
+  },
+  {
+    name: 'Node.js',
+    Icon: Coffee,
+    color: 'text-green-500',
+    hoverColor: 'hover:border-green-500',
+    duration: 6
+  },
+  {
+    name: 'PostgreSQL',
+    Icon: Database,
+    color: 'text-sky-600',
+    hoverColor: 'hover:border-sky-600',
+    duration: 4
+  }
+];
+---
+
+<div class="border-b border-neutral-800 pb-24" id="technologies">
+  <SectionTitle title="Technologies" />
+  
+  <div class="flex flex-wrap items-center justify-center gap-4" data-animate>
+    {technologies.map(tech => {
+      const IconComponent = tech.Icon;
+      return (
+        <div 
+          class:list={[
+            'rounded-2xl border-4 border-neutral-800 p-4 transition-colors duration-300',
+            tech.hoverColor,
+            `float-animation-${tech.duration}`
+          ]}
+        >
+          <IconComponent 
+            className={`w-16 h-16 ${tech.color}`}
+          />
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .float-animation-2 {
+    animation: float 2s ease-in-out infinite;
+  }
+  .float-animation-2.5 {
+    animation: float 2.5s ease-in-out infinite;
+  }
+  .float-animation-3 {
+    animation: float 3s ease-in-out infinite;
+  }
+  .float-animation-4 {
+    animation: float 4s ease-in-out infinite;
+  }
+  .float-animation-5 {
+    animation: float 5s ease-in-out infinite;
+  }
+  .float-animation-6 {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-animate].animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document.querySelectorAll('[data-animate]').forEach((element) => {
+    observer.observe(element);
+  });
+</script>
