@@ -7,4 +7,5 @@ export interface Project {
   github?: string;
   documentation?: string;
   preview?: string;
+  videoUrl?: string;
 }
