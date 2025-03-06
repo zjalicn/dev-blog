@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     ],
     image: "/projects/lumiere.webp",
     tags: ["Next.js", "TypeScript", "AWS", "PostgreSQL"],
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    // videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     preview: "https://tree-link-three.vercel.app",
   },
   {
