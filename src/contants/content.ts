@@ -1,24 +1,10 @@
-import type { Experience } from "./types/experience";
+import type { Experience } from "../types/experience";
 
 export const SITE_TITLE = "createdbyniko.";
 export const SITE_DESCRIPTION = "All my softwareprojects and thoughts";
 
 export const HERO_CONTENT =
   "I'm a Software Engineer with expertise in modern web technologies, specializing in building scalable applications with React, Angular, .NET, and Node.js. Experienced in developing cloud-based architectures and collaborating with cross-functional teams to deliver high-impact solutions.";
-
-export const CONTACT_INFO = {
-  address: "Canada 🇨🇦",
-  phone: "+1 (226) 975 3182",
-  email: "nzjalic@gmail.com",
-};
-
-export const SOCIAL_LINKS = {
-  linkedin: "https://www.linkedin.com/in/zjalicn",
-  github: "https://github.com/zjalicn",
-  resume:
-    "https://fg92krreal8mypv5.public.blob.vercel-storage.com/nikola-zjalic-cv-UEbT0iVY9pHTRUQAIyXqDCjukPuErU.pdf",
-  twitter: "https://twitter.com/zjalicn",
-};
 
 export const EXPERIENCES: Experience[] = [
   {
@@ -62,4 +48,9 @@ export const EXPERIENCES: Experience[] = [
     ],
     technologies: ["HTML/CSS", "Node.js", "MySQL"],
   },
+];
+
+export const ABOUT_CONTENT = [
+  "I have nearly 5 years of experience building scalable web applications using technologies like Angular, React, Node.js, .NET, and AWS. I've designed responsive frontend UIs, spun up and refactored new REST API services, integrated with complex microservice architectures. I enjoy working in collaborative environments, solving new challenges, and exploring new technologies.",
+  "In my free time, I enjoy playing live music, learning new skills (el año pasado aprendí español, and this year my goal is to launch 10 apps), traveling and experiencing new cultures.",
 ];

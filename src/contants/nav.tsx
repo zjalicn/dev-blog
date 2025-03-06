@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from "@/constants";
+import { SOCIAL_LINKS } from "@/contants/contact";
 import { ICONS } from "./icons";
 
 export const NAVBAR_LINKS = [
