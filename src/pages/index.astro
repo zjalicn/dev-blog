@@ -1,39 +1,37 @@
 ---
-import BaseLayout from '../components/layout/BaseLayout.astro';
-import Hero from '../components/home/Hero.astro';
-import Technologies from '../components/home/Technologies.astro';
-import Experience from '../components/home/Experience.astro';
-import Contact from '../components/home/Contact.astro';
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import Technologies from "../components/home/Technologies.astro";
+import Experience from "../components/home/Experience.astro";
 ---
 
-<BaseLayout title="Nikola Zjalic - Developer Blog">
+<BaseLayout title="createdbyniko.">
   <div class="space-y-16">
     <Hero />
     <Technologies />
     <Experience />
-    <Contact />
   </div>
 </BaseLayout>
 
 <script>
   // Need to handle page refresh when navigating back to home page
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     // Re-initialize intersection observers
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '50px'
+      rootMargin: "50px",
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('[data-animate]').forEach((element) => {
+    document.querySelectorAll("[data-animate]").forEach((element) => {
       observer.observe(element);
     });
   });

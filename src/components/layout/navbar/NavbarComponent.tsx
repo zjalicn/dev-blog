@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Linkedin, Github, Menu, FileText } from "lucide-react";
-
-const SOCIAL_LINKS = {
-  linkedin: "https://www.linkedin.com/in/zjalicn",
-  github: "https://www.github.com/zjalicn",
-  resume:
-    "https://fg92krreal8mypv5.public.blob.vercel-storage.com/nikola-zjalic-cv-UEbT0iVY9pHTRUQAIyXqDCjukPuErU.pdf",
-};
-
-const NAV_ITEMS = [
-  { name: "Home", path: "/" },
-  { name: "Blog", path: "/blog" },
-  { name: "Projects", path: "/projects" },
-  { name: "About", path: "/about" },
-];
+import { Linkedin, Github, Menu, FileText, Twitter } from "lucide-react";
+import { NAV_ITEMS, SOCIAL_LINKS } from "@/constants";
+import { ICONS } from "@/contants/icons";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,28 +64,45 @@ const NavbarComponent = () => {
           href={SOCIAL_LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
           aria-label="LinkedIn Profile"
         >
-          <Linkedin className="w-6 h-6" />
+          <ICONS.LINKEDIN className="w-6 h-6" />
+          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+            LinkedIn
+          </span>
         </a>
         <a
           href={SOCIAL_LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
           aria-label="GitHub Profile"
         >
-          <Github className="w-6 h-6" />
+          <ICONS.GITHUB className="w-6 h-6" />
+          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+            GitHub
+          </span>
+        </a>
+        <a
+          href={SOCIAL_LINKS.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
+          aria-label="Twitter Profile"
+        >
+          <ICONS.TWITTER className="w-6 h-6" />
         </a>
         <a
           href={SOCIAL_LINKS.resume}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
-          aria-label="Download Resume"
+          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
         >
-          <FileText className="w-6 h-6" />
+          <ICONS.RESUME className="w-6 h-6" />
+          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+            Download Resume
+          </span>
         </a>
       </div>
 

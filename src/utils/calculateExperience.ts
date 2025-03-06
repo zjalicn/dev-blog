@@ -1,4 +1,4 @@
-export function calculateTotalExperience(experiences: any) {
+export function calculateTotalYearsOfExperience(experiences: any) {
   let totalMonths = 0;
 
   experiences.forEach((exp: any) => {

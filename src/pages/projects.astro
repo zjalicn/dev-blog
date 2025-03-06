@@ -1,45 +1,50 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
-import { Github, ExternalLink } from "lucide-react";
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  github?: string;
-  preview?: string;
-}
+import { ExternalLink } from "lucide-react";
+import type { Project } from "@/types/project";
+import { ICONS } from "@/contants/icons";
 
 const projects: Project[] = [
   {
     title: "Lumiere",
-    description:
-      "A platform for independent musicians to grow their brand. Built with Next.js, featuring real-time analytics, media players, and dynamic artist profiles. Integrated with various music APIs and AWS services.",
+    subheader: "Modern platform for independent artists",
+    description: [
+      "Platform for independent musicians to grow their brand and connect with fans",
+      "Built with Next.js, featuring real-time analytics and dynamic artist profiles",
+      "Integrated with various music APIs and AWS services for scalable media delivery",
+    ],
     image: "/blog-placeholder-1.jpg",
     tags: ["Next.js", "TypeScript", "AWS", "PostgreSQL"],
     preview: "https://tree-link-three.vercel.app",
   },
   {
     title: "SaaStarter",
-    description:
-      "A fully functional Next.js SaaS public template for creating subscription sites with user authentication, email verification and forgot password flow using sessions, authenticated pages and API routes, database synchronization with Stripe via webhooks, functional User Settings page, user uploaded file storage",
+    subheader: "Complete SaaS starter template",
+    description: [
+      "Fully functional Next.js SaaS template with subscription management, user authentication, email verification and password reset flows",
+      "Database synchronization with Stripe via webhooks",
+      "File upload capabilities and storage",
+    ],
     image: "/blog-placeholder-3.jpg",
     tags: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Stripe"],
     github: "https://github.com/thxmos/saastarter",
   },
-  {
-    title: "Dev Blog",
-    description:
-      "A performant blog and portfolio site built with Astro. Features static site generation, markdown content, and a dark theme.",
-    image: "/blog-placeholder-2.jpg",
-    tags: ["Astro", "TypeScript", "Tailwind"],
-  },
+  // {
+  //   title: "Dev Blog",
+  //   subheader: "This site you're on right now!",
+  //   description: [
+  //     "Performant blog and portfolio site built with Astro",
+  //     "Features static site generation for optimal loading speeds",
+  //     "Markdown content management with dark theme support",
+  //   ],
+  //   image: "/blog-placeholder-2.jpg",
+  //   tags: ["Astro", "TypeScript", "Tailwind"],
+  // },
 ];
 ---
 
-<BaseLayout title="Projects - Nikola Zjalic" description="My Recent Projects">
-  <main class="mt-16 max-w-5xl mx-auto px-6">
+<BaseLayout title="Projects" description="My Recent Projects">
+  <main class="max-w-5xl mx-auto">
     <h1 class="text-4xl font-bold text-white text-center mb-12">Projects</h1>
 
     <div class="space-y-12">
@@ -58,13 +63,26 @@ const projects: Project[] = [
 
               {/* Content */}
               <div class="w-full md:w-3/5 p-6 md:p-8 flex flex-col">
-                <h3 class="text-2xl font-bold text-white mb-2">
+                <h3 class="text-2xl font-bold text-white mb-1">
                   {project.title}
                 </h3>
 
-                <p class="text-neutral-300 mb-4 flex-grow">
-                  {project.description}
-                </p>
+                {/* Subheader */}
+                {project.subheader && (
+                  <p class="text-neutral-500 mb-4 text-sm">
+                    {project.subheader}
+                  </p>
+                )}
+
+                {/* Description Points */}
+                <ul class="my-4 text-neutral-300 transition-colors duration-200 list-none flex-grow">
+                  {project.description.map((point) => (
+                    <li class="mb-2 pl-5 relative">
+                      <span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      <span class="bullet-text">{point}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 {/* Tags */}
                 <div class="flex flex-wrap gap-2 mb-6">
@@ -84,7 +102,7 @@ const projects: Project[] = [
                       rel="noopener noreferrer"
                       class="flex items-center gap-2 px-4 py-2 bg-neutral-800 rounded-lg text-white hover:bg-neutral-700 transition-colors duration-200"
                     >
-                      <Github size={16} />
+                      <ICONS.GITHUB size={16} />
                       <span>GitHub</span>
                     </a>
                   )}
@@ -109,3 +127,23 @@ const projects: Project[] = [
     </div>
   </main>
 </BaseLayout>
+
+<style>
+  /* Properly align bullet text */
+  .bullet-text {
+    display: inline-block;
+    margin-left: 0;
+    width: calc(100% - 5px);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  li {
+    text-indent: 0;
+    display: flex;
+  }
+
+  li span.absolute {
+    margin-top: 0.12em; /* Adjust this value for perfect vertical alignment */
+  }
+</style>

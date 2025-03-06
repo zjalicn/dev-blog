@@ -263,7 +263,7 @@ const InitialLoadingScreen = () => {
                   padding: 0,
                 }}
               >
-                createdbyniko
+                createdbyniko.
               </motion.h1>
             )}
           </AnimatePresence>
@@ -378,7 +378,7 @@ const InitialLoadingScreen = () => {
                   padding: 0,
                 }}
               >
-                createdbyniko
+                createdbyniko.
               </motion.h1>
             )}
           </AnimatePresence>

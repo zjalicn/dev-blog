@@ -1,132 +1,85 @@
 ---
-import { Calendar, Building2, Briefcase } from 'lucide-react';
-import SectionTitle from '@/components/shared/SectionTitle.astro';
-import TechTag from '@/components/shared/TechTag.astro';
-import { calculateTotalExperience } from '../../utils/calculateExperience';
-
-interface Experience {
-  year: string;
-  role: string;
-  company: string;
-  description: string;
-  technologies: string[];
-}
-
-const EXPERIENCES: Experience[] = [
-  {
-    year: "2022-06 - Current",
-    role: "Full Stack Developer",
-    company: "Rocket Mortgage Canada",
-    description: `Designed and refactored responsive components with Angular and .NET Rest APIs (with Entity Framework) in an AWS based architecture with dozens of proprietary and third party services, and databases. Collaborated with stakeholders to define project requirements and plan sprints with the dev team each iteration.`,
-    technologies: ["Typescript", "Angular", "C#/.NET", "Postgres", "AWS"],
-  },
-  {
-    year: "2019-10 - 2021-03",
-    role: "Full Stack Developer",
-    company: "White Whale Analytics",
-    description: `Developed responsive UI components and REST API endpoints using React + Redux and Node.js for our proprietary application. Wrote unit and integration tests using Mocha and Jest to ensure code reliability. Presented in meetings with stakeholders to provide technical expertise and support.`,
-    technologies: ["React", "Redux", "Node.js"],
-  },
-  {
-    year: "2019-01 - 2019-09",
-    role: "Frontend Developer",
-    company: "Critical Mass",
-    description: `Created responsive components and webpages for Blizzard Entertainment and Mazda e-commerce stores using React and Javascript respectively. Managed product data using Magento e-commerce platform and worked in a cross collaborative team using Jira to manage tasks.`,
-    technologies: ["Javascript", "React", "MySQL"],
-  },
-  // {
-  //   year: "2017-09 - 2018-12",
-  //   role: "Full Stack Developer",
-  //   company: "Cor.AI",
-  //   description: `Engineered a cloud-based cardiac rehabilitation app using HTML, CSS, Node.js, MySQL, and various JS frameworks featuring an interactive dashboard and IBM Watson chatbot to dynamically customize content and data presentation based on user prompts.`,
-  //   technologies: ["HTML/CSS", "Node.js", "MySQL"],
-  // }
-];
-
-const totalExperience = calculateTotalExperience(EXPERIENCES);
+import { Calendar, Building2, Briefcase } from "lucide-react";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import TechTag from "@/components/shared/TechTag.astro";
+import { calculateTotalYearsOfExperience } from "@/utils/calculateExperience";
+import { EXPERIENCES } from "@/constants";
+const totalExperience = calculateTotalYearsOfExperience(EXPERIENCES);
 ---
 
 <div class="border-b border-neutral-900 pb-4">
-  <SectionTitle 
-    title="Professional Experience" 
+  <SectionTitle
+    title="Professional Experience"
     subtitle={`${totalExperience}`}
   />
-  
+
   <div>
-    {EXPERIENCES.map((experience, index) => (
-      <div class="mb-12 flex flex-wrap lg:justify-center group" data-animate>
-        <div class="w-full lg:w-1/4">
-          <div class="flex items-center gap-2 mb-2 text-sm text-purple-400 transition-colors duration-200">
-            <Calendar class="w-4 h-4" />
-            <p>{experience.year}</p>
-          </div>
-        </div>
-        
-        <div class="w-full max-w-xl lg:w-3/4">
-          <div class="flex items-start mb-2">
-            <div class="flex flex-col gap-4">
-              <h6 class="flex items-center gap-2 font-semibold text-purple-400 transition-colors duration-200">
-            <Briefcase class="w-5 h-5 mt-1 text-purple-400" />
-                {experience.role}
-              </h6>
-              <div class="flex items-center gap-2 text-sm text-purple-100">
-                <Building2 class="w-4 h-4" />
-                {experience.company}
-              </div>
+    {
+      EXPERIENCES.map((experience) => (
+        <div class="mb-12 flex flex-wrap lg:justify-center group" data-animate>
+          <div class="w-full lg:w-1/4">
+            <div class="flex items-center gap-2 mb-2 text-sm text-purple-400 transition-colors duration-200">
+              <Calendar className="w-4 h-4" />
+              <p>{experience.year}</p>
             </div>
           </div>
-          
-          <p class="my-8 text-neutral-300 transition-colors duration-200">
-            {experience.description}
-          </p>
-          
-          <div class="flex flex-wrap gap-2">
-            {experience.technologies.map((tech) => (
-              <TechTag name={tech} />
-            ))}
+
+          <div class="w-full max-w-xl lg:w-3/4">
+            <div class="flex items-start mb-2">
+              <div class="flex flex-col gap-4">
+                <h6 class="flex items-center gap-2 font-semibold text-purple-400 transition-colors duration-200">
+                  <Briefcase className="w-5 h-5 mt-1 text-purple-400" />
+                  {experience.role}
+                </h6>
+                <div class="flex items-center gap-2 text-sm text-purple-100">
+                  <Building2 className="w-4 h-4" />
+                  {experience.company}
+                </div>
+              </div>
+            </div>
+
+            <ul class="my-8 text-neutral-300 transition-colors duration-200 list-none">
+              {experience.description.map((line) => (
+                <li class="mb-2 pl-4 relative">
+                  <span class="absolute left-0 top-2 w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                  <span class="bullet-text">{line}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="flex flex-wrap gap-2">
+              {experience.technologies.map((tech) => (
+                <TechTag name={tech} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </div>
 
-<style>
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-  }
-
-  [data-animate].animate-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Add stagger effect to multiple items */
-  [data-animate]:nth-child(1) { transition-delay: 0.1s; }
-  [data-animate]:nth-child(2) { transition-delay: 0.2s; }
-  [data-animate]:nth-child(3) { transition-delay: 0.3s; }
-  [data-animate]:nth-child(4) { transition-delay: 0.4s; }
-</style>
-
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { 
-      threshold: 0.2,
-      rootMargin: '50px'
-    }
-  );
-
-  document.querySelectorAll('[data-animate]').forEach((element) => {
-    observer.observe(element);
-  });
+  import { initializeObserver } from "@/utils/initializeObserver";
+  initializeObserver();
 </script>
+
+<style>
+  /* Properly align bullet text */
+  .bullet-text {
+    display: inline-block;
+    margin-left: 0;
+    width: calc(100% - 5px);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  li {
+    text-indent: 0;
+    display: flex;
+  }
+
+  li span.absolute {
+    margin-top: 0.1em; /* Adjust this value for perfect vertical alignment */
+  }
+</style>

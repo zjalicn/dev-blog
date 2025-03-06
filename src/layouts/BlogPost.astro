@@ -1,101 +1,97 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseLayout from '../components/layout/BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-	<article class="flexmt-16 max-w-4xl mx-auto px-6">
-		<div class="w-full flex justify-center mb-8">
-			<img
-				src={heroImage}
-				alt=""
-				class="w-full max-w-4xl rounded-xl"
-			/>
-		</div>
-		
-		<div class="prose prose-invert mx-auto">
-			<div class="text-center mb-8 pb-8 border-b border-neutral-800">
-				<h1 class="text-4xl font-bold text-white mb-4">{title}</h1>
-				<div class="text-neutral-400 mb-2">
-					<FormattedDate date={pubDate} />
-					{
-						updatedDate && (
-							<div class="italic">
-								Last updated on <FormattedDate date={updatedDate} />
-							</div>
-						)
-					}
-				</div>
-			</div>
-			
-			<slot />
-		</div>
-	</article>
+  <article class="flexmt-16 max-w-4xl mx-auto px-6">
+    <div class="w-full flex justify-center mb-8">
+      <img src={heroImage} alt="" class="w-full max-w-4xl rounded-xl" />
+    </div>
+
+    <div class="prose prose-invert mx-auto">
+      <div class="text-center mb-8 pb-8 border-b border-neutral-800">
+        <h1 class="text-4xl font-bold text-white mb-4">{title}</h1>
+        <div class="text-neutral-400 mb-2">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <div class="italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      <slot />
+    </div>
+  </article>
 </BaseLayout>
 
 <style>
-	.prose {
-		max-width: 720px;
-	}
-	:global(.prose p) {
-		color: #d4d4d4;
-		margin-bottom: 1.5em;
-	}
-	:global(.prose h2) {
-		color: white;
-		font-size: 1.5em;
-		margin-top: 2em;
-		margin-bottom: 1em;
-	}
-	:global(.prose h3) {
-		color: white;
-		font-size: 1.25em;
-		margin-top: 1.5em;
-		margin-bottom: 0.75em;
-	}
-	:global(.prose a) {
-		color: #a855f7;
-	}
-	:global(.prose strong) {
-		color: white;
-	}
-	:global(.prose ul),
-	:global(.prose ol) {
-		margin: 1.5em 0;
-		padding-left: 1.5em;
-	}
-	:global(.prose li) {
-		margin: 0.5em 0;
-	}
-	:global(.prose blockquote) {
-		border-left: 3px solid #a855f7;
-		padding-left: 1.5em;
-		margin: 1.5em 0;
-		color: #a3a3a3;
-	}
-	:global(.prose img) {
-		border-radius: 0.5em;
-	}
-	:global(.prose pre) {
-		background-color: #1a1a1a;
-		padding: 1.5em;
-		border-radius: 0.5em;
-		overflow-x: auto;
-		margin: 1.5em 0;
-	}
-	:global(.prose code) {
-		background-color: #2a2a2a;
-		padding: 0.2em 0.4em;
-		border-radius: 0.25em;
-		font-size: 0.9em;
-	}
-	:global(.prose pre code) {
-		background-color: transparent;
-		padding: 0;
-	}
+  .prose {
+    max-width: 720px;
+  }
+  :global(.prose p) {
+    color: #d4d4d4;
+    margin-bottom: 1.5em;
+  }
+  :global(.prose h2) {
+    color: white;
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  :global(.prose h3) {
+    color: white;
+    font-size: 1.25em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  :global(.prose a) {
+    color: #a855f7;
+  }
+  :global(.prose strong) {
+    color: white;
+  }
+  :global(.prose ul),
+  :global(.prose ol) {
+    margin: 1.5em 0;
+    padding-left: 1.5em;
+  }
+  :global(.prose li) {
+    margin: 0.5em 0;
+  }
+  :global(.prose blockquote) {
+    border-left: 3px solid #a855f7;
+    padding-left: 1.5em;
+    margin: 1.5em 0;
+    color: #a3a3a3;
+  }
+  :global(.prose img) {
+    border-radius: 0.5em;
+  }
+  :global(.prose pre) {
+    background-color: #1a1a1a;
+    padding: 1.5em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    margin: 1.5em 0;
+  }
+  :global(.prose code) {
+    background-color: #2a2a2a;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
+    font-size: 0.9em;
+  }
+  :global(.prose pre code) {
+    background-color: transparent;
+    padding: 0;
+  }
 </style>

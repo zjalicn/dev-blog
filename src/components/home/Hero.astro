@@ -1,6 +1,6 @@
 ---
-import { HERO_CONTENT } from "@/consts";
-import HeroImage from "../../assets/profile.png";
+import { HERO_CONTENT } from "@/constants";
+import { Images } from "@/utils/images";
 
 interface Props {
   name?: string;
@@ -20,7 +20,7 @@ const {
     <div class="w-full lg:w-1/2 lg:p-8">
       <div class="flex justify-center mb-8">
         <img
-          src={HeroImage.src}
+          src={Images.hero.src}
           alt={name}
           width={1200}
           height={1200}

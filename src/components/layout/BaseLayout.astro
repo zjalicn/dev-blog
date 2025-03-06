@@ -7,13 +7,14 @@ interface Props {
 
 const {
   title,
-  description = "createdbyniko",
+  description = "createdbyniko.",
   image = "/images/default-social.jpg",
 } = Astro.props;
 
 import { ViewTransitions } from "astro:transitions";
-import Navbar from "./Navbar.astro";
+import Navbar from "./navbar/Navbar.astro";
 import InitialLoadingScreen from "../InitialLoadingScreen";
+import Footer from "../Footer.astro";
 import "@/styles/global.css";
 ---
 
@@ -53,8 +54,6 @@ import "@/styles/global.css";
   <body
     class="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900"
   >
-    <InitialLoadingScreen client:load />
-
     <div class="fixed top-0 -z-10 h-full w-full">
       <div
         class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
@@ -63,10 +62,13 @@ import "@/styles/global.css";
     </div>
 
     <div class="container mx-auto px-8">
+      <!-- <InitialLoadingScreen client:only="react" /> -->
+
       <Navbar />
-      <main>
+      <main class="my-16 px-6">
         <slot />
       </main>
+      <Footer />
     </div>
   </body>
 </html>
