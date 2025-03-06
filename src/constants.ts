@@ -20,13 +20,6 @@ export const SOCIAL_LINKS = {
   twitter: "https://twitter.com/zjalicn",
 };
 
-export const NAV_ITEMS = [
-  { name: "Home", path: "/" },
-  { name: "Blog", path: "/blog" },
-  { name: "Projects", path: "/projects" },
-  { name: "About", path: "/about" },
-];
-
 export const EXPERIENCES: Experience[] = [
   {
     year: "2022-06 - 2025-03",

@@ -1,38 +1,29 @@
 ---
-import { MailIcon, Linkedin, Github, Twitter, MapPinIcon } from "lucide-react";
-import { SOCIAL_LINKS, SITE_TITLE, CONTACT_INFO } from "@/constants";
-import { NAV_ITEMS } from "@/constants";
-
-const CONTACT: ContactInfo = {
-  address: CONTACT_INFO.address,
-  phone: CONTACT_INFO.phone,
-  email: CONTACT_INFO.email,
-  linkedin: SOCIAL_LINKS.linkedin || "https://www.linkedin.com/in/zjalicn",
-  github: SOCIAL_LINKS.github || "https://github.com/zjalicn",
-  twitter: SOCIAL_LINKS.twitter,
-};
+import { SITE_TITLE, CONTACT_INFO, SOCIAL_LINKS } from "@/constants";
+import { NAV_LINKS } from "@/contants/nav";
+import { ICONS } from "@/contants/icons";
 
 const contactLinks: ContactLink[] = [
   {
-    href: `mailto:${CONTACT.email}`,
-    icon: MailIcon,
-    text: CONTACT.email,
+    href: `mailto:${CONTACT_INFO.email}`,
+    icon: ICONS.MAIL,
+    text: CONTACT_INFO.email,
   },
   {
-    href: CONTACT.linkedin,
-    icon: Linkedin,
+    href: SOCIAL_LINKS.linkedin,
+    icon: ICONS.LINKEDIN,
     text: "LinkedIn",
     newTab: true,
   },
   {
-    href: CONTACT.github,
-    icon: Github,
+    href: SOCIAL_LINKS.github,
+    icon: ICONS.GITHUB,
     text: "GitHub",
     newTab: true,
   },
   {
-    href: CONTACT.twitter,
-    icon: Twitter,
+    href: SOCIAL_LINKS.twitter,
+    icon: ICONS.TWITTER,
     text: "Twitter",
     newTab: true,
   },
@@ -57,17 +48,17 @@ const today = new Date();
           </h3>
 
           <div class="flex items-center gap-3 text-gray-300">
-            <MapPinIcon className="w-5 h-5 text-purple-400" />
-            <span>{CONTACT.address}</span>
+            <ICONS.LOCATION className="w-5 h-5 text-purple-400" />
+            <span>{CONTACT_INFO.address}</span>
           </div>
 
           <div class="flex items-center gap-3 text-gray-300">
-            <MailIcon className="w-5 h-5 text-purple-400" />
+            <ICONS.MAIL className="w-5 h-5 text-purple-400" />
             <a
-              href={`mailto:${CONTACT.email}`}
+              href={`mailto:${CONTACT_INFO.email}`}
               class="hover:text-purple-400 transition-colors"
             >
-              {CONTACT.email}
+              {CONTACT_INFO.email}
             </a>
           </div>
 
@@ -80,7 +71,7 @@ const today = new Date();
             <div class="flex gap-4 justify-center md:justify-start">
               {
                 contactLinks
-                  .filter((link) => link.icon !== MailIcon)
+                  .filter((link) => link.icon !== ICONS.MAIL)
                   .map(({ href, icon: Icon, text }) => (
                     <a
                       href={href}
@@ -108,7 +99,7 @@ const today = new Date();
 
           <nav class="flex flex-col gap-4">
             {
-              NAV_ITEMS.map((item) => (
+              NAV_LINKS.map((item) => (
                 <a
                   href={item.path}
                   class="text-gray-300 hover:text-purple-400 transition-colors text-lg flex items-center gap-2"
@@ -124,7 +115,7 @@ const today = new Date();
     </div>
 
     <!-- Copyright -->
-    <div class="text-center text-gray-500 text-sm">
+    <div class="text-center text-gray-500 text-sm p-16">
       &copy; {today.getFullYear()}
       {SITE_TITLE}
       <br />

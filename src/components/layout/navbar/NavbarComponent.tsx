@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Linkedin, Github, Menu, FileText, Twitter } from "lucide-react";
-import { NAV_ITEMS, SOCIAL_LINKS } from "@/constants";
-import { ICONS } from "@/contants/icons";
+import { Menu } from "lucide-react";
+import { NAV_LINKS, NAVBAR_LINKS } from "@/contants/nav";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +42,7 @@ const NavbarComponent = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-        {NAV_ITEMS.map((item) => (
+        {NAV_LINKS.map((item) => (
           <a
             key={item.path}
             href={item.path}
@@ -60,50 +59,21 @@ const NavbarComponent = () => {
 
       {/* Social Links */}
       <div className="flex items-center justify-center gap-4 text-2xl">
-        <a
-          href={SOCIAL_LINKS.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
-          aria-label="LinkedIn Profile"
-        >
-          <ICONS.LINKEDIN className="w-6 h-6" />
-          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
-            LinkedIn
-          </span>
-        </a>
-        <a
-          href={SOCIAL_LINKS.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
-          aria-label="GitHub Profile"
-        >
-          <ICONS.GITHUB className="w-6 h-6" />
-          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
-            GitHub
-          </span>
-        </a>
-        <a
-          href={SOCIAL_LINKS.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
-          aria-label="Twitter Profile"
-        >
-          <ICONS.TWITTER className="w-6 h-6" />
-        </a>
-        <a
-          href={SOCIAL_LINKS.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
-        >
-          <ICONS.RESUME className="w-6 h-6" />
-          <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
-            Download Resume
-          </span>
-        </a>
+        {NAVBAR_LINKS.map((link) => (
+          <a
+            key={link.key}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-300 hover:text-purple-400 transition-colors duration-200 relative group"
+            aria-label={`${link.name} Profile`}
+          >
+            <link.icon className="w-6 h-6" />
+            <span className="tooltip-text absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+              {link.name}
+            </span>
+          </a>
+        ))}
       </div>
 
       {/* Mobile Menu Button */}
@@ -122,7 +92,7 @@ const NavbarComponent = () => {
           onClick={handleOutsideClick}
         >
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            {NAV_ITEMS.map((item) => (
+            {NAV_LINKS.map((item) => (
               <a
                 key={item.path}
                 href={item.path}

@@ -6,9 +6,11 @@ import { FaNodeJs } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
 import {
   FileTextIcon,
+  MailIcon,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,
+  MapPinIcon,
 } from "lucide-react";
 
 export const ICONS = {
@@ -22,4 +24,6 @@ export const ICONS = {
   GITHUB: GithubIcon,
   TWITTER: TwitterIcon,
   RESUME: FileTextIcon,
+  MAIL: MailIcon,
+  LOCATION: MapPinIcon,
 };
