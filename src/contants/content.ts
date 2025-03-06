@@ -72,8 +72,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Astro Lift",
-    subheader:
-      "A light weight solution for building static websites for businesses with beautiful UIs",
+    subheader: "A lightweight static website solution for businesses",
     description: [
       "Easily customizable static website boilerplate",
       "Appointment booking page which integrates with Google Calendar",
@@ -82,15 +81,15 @@ export const PROJECTS: Project[] = [
     image: "/projects/astro-lift.webp",
     tags: ["Astro", "React", "TypeScript"],
     github: "https://github.com/zjalicn/Astro-Lift",
-    documentation: "https://astro-lift.vercel.app/docs",
+    // documentation: "https://astro-lift.vercel.app/docs",
     preview: "https://astro-lift.vercel.app",
   },
   {
     title: "SaaStarter",
-    subheader: "Complete SaaS starter template",
+    subheader: "Complete Next.js SaaS starter template",
     description: [
       "Fully functional Next.js SaaS template with subscription management, user authentication, email verification and password reset flows",
-      "Database synchronization with Stripe via webhooks",
+      "Stripe subscriptions & database synchronization with via webhooks",
       "File upload capabilities and storage",
     ],
     image: "/projects/saastarter.webp",
