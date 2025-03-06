@@ -1,5 +1,5 @@
 export const CONTACT_INFO = {
-  address: "Canada 🇨🇦",
+  address: "Ontario, Canada",
   phone: "+1 (226) 975 3182",
   email: "nzjalic@gmail.com",
 };

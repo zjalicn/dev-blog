@@ -80,8 +80,8 @@ export const PROJECTS: Project[] = [
     ],
     image: "/projects/astro-lift.webp",
     tags: ["Astro", "React", "TypeScript"],
-    github: "https://github.com/zjalicn/Astro-Lift",
     // documentation: "https://astro-lift.vercel.app/docs",
+    github: "https://github.com/zjalicn/Astro-Lift",
     preview: "https://astro-lift.vercel.app",
   },
   {
@@ -94,18 +94,8 @@ export const PROJECTS: Project[] = [
     ],
     image: "/projects/saastarter.webp",
     tags: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Stripe"],
+    documentation: "https://saastarter.vercel.app/docs",
     github: "https://github.com/thxmos/saastarter",
     preview: "https://saas-starter-one.vercel.app",
   },
-  // {
-  //   title: "Dev Blog",
-  //   subheader: "This site you're on right now!",
-  //   description: [
-  //     "Performant blog and portfolio site built with Astro",
-  //     "Features static site generation for optimal loading speeds",
-  //     "Markdown content management with dark theme support",
-  //   ],
-  //   image: "/blog-placeholder-2.jpg",
-  //   tags: ["Astro", "TypeScript", "Tailwind"],
-  // },
 ];
