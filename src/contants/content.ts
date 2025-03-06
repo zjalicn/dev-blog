@@ -1,3 +1,4 @@
+import type { Project } from "@/types/project";
 import type { Experience } from "../types/experience";
 
 export const SITE_TITLE = "createdbyniko.";
@@ -53,4 +54,58 @@ export const EXPERIENCES: Experience[] = [
 export const ABOUT_CONTENT = [
   "I have nearly 5 years of experience building scalable web applications using technologies like Angular, React, Node.js, .NET, and AWS. I've designed responsive frontend UIs, spun up and refactored new REST API services, integrated with complex microservice architectures. I enjoy working in collaborative environments, solving new challenges, and exploring new technologies.",
   "In my free time, I enjoy playing live music, learning new skills (el año pasado aprendí español, and this year my goal is to launch 10 apps), traveling and experiencing new cultures.",
+];
+
+export const PROJECTS: Project[] = [
+  {
+    title: "Lumiere",
+    subheader: "Platform to help independent artists reach their audience",
+    description: [
+      "Platform for independent musicians to grow their brand and connect with fans",
+      "Built with Next.js, featuring real-time analytics and dynamic artist profiles",
+      "Integrated with various music APIs and AWS services for scalable media delivery",
+    ],
+    image: "/projects/lumiere.webp",
+    tags: ["Next.js", "TypeScript", "AWS", "PostgreSQL"],
+    preview: "https://tree-link-three.vercel.app",
+  },
+  {
+    title: "Astro Lift",
+    subheader:
+      "A light weight solution for building static websites for businesses with beautiful UIs",
+    description: [
+      "Easily customizable static website boilerplate",
+      "Appointment booking page which integrates with Google Calendar",
+      "Google API Integration for location information and reviews",
+    ],
+    image: "/projects/astro-lift.webp",
+    tags: ["Astro", "React", "TypeScript"],
+    github: "https://github.com/zjalicn/Astro-Lift",
+    documentation: "https://astro-lift.vercel.app/docs",
+    preview: "https://astro-lift.vercel.app",
+  },
+  {
+    title: "SaaStarter",
+    subheader: "Complete SaaS starter template",
+    description: [
+      "Fully functional Next.js SaaS template with subscription management, user authentication, email verification and password reset flows",
+      "Database synchronization with Stripe via webhooks",
+      "File upload capabilities and storage",
+    ],
+    image: "/projects/saastarter.webp",
+    tags: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Stripe"],
+    github: "https://github.com/thxmos/saastarter",
+    preview: "https://saas-starter-one.vercel.app",
+  },
+  // {
+  //   title: "Dev Blog",
+  //   subheader: "This site you're on right now!",
+  //   description: [
+  //     "Performant blog and portfolio site built with Astro",
+  //     "Features static site generation for optimal loading speeds",
+  //     "Markdown content management with dark theme support",
+  //   ],
+  //   image: "/blog-placeholder-2.jpg",
+  //   tags: ["Astro", "TypeScript", "Tailwind"],
+  // },
 ];

@@ -1,6 +1,8 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { NAV_ITEMS, SITE_TITLE, SOCIAL_LINKS } from "../contants/content";
+import { SITE_TITLE } from "../contants/content";
+import { SOCIAL_LINKS } from "../contants/contact";
+import { NAV_LINKS } from "../contants/nav";
 ---
 
 <header>
@@ -8,7 +10,7 @@ import { NAV_ITEMS, SITE_TITLE, SOCIAL_LINKS } from "../contants/content";
     <h2><a href="/">{SITE_TITLE}</a></h2>
     <div class="internal-links">
       {
-        NAV_ITEMS.map(({ name, path }) => (
+        NAV_LINKS.map(({ name, path }) => (
           <HeaderLink href={path}>{name}</HeaderLink>
         ))
       }

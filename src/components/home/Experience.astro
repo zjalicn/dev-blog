@@ -7,56 +7,51 @@ import { EXPERIENCES } from "@/contants/content";
 const totalExperience = calculateTotalYearsOfExperience(EXPERIENCES);
 ---
 
-<div class="border-b border-neutral-900 pb-4">
-  <SectionTitle
-    title="Professional Experience"
-    subtitle={`${totalExperience}`}
-  />
+<SectionTitle title="Professional Experience" subtitle={`${totalExperience}`} />
 
-  <div>
-    {
-      EXPERIENCES.map((experience) => (
-        <div class="mb-12 flex flex-wrap lg:justify-center group" data-animate>
-          <div class="w-full lg:w-1/4">
-            <div class="flex items-center gap-2 mb-2 text-sm text-purple-400 transition-colors duration-200">
-              <Calendar className="w-4 h-4" />
-              <p>{experience.year}</p>
-            </div>
-          </div>
-
-          <div class="w-full max-w-xl lg:w-3/4">
-            <div class="flex items-start mb-2">
-              <div class="flex flex-col gap-4">
-                <h6 class="flex items-center gap-2 font-semibold text-purple-400 transition-colors duration-200">
-                  <Briefcase className="w-5 h-5 mt-1 text-purple-400" />
-                  {experience.role}
-                </h6>
-                <div class="flex items-center gap-2 text-sm text-purple-100">
-                  <Building2 className="w-4 h-4" />
-                  {experience.company}
-                </div>
-              </div>
-            </div>
-
-            <ul class="my-8 text-neutral-300 transition-colors duration-200 list-none">
-              {experience.description.map((line) => (
-                <li class="mb-2 pl-4 relative">
-                  <span class="absolute left-0 top-2 w-1.5 h-1.5 bg-purple-400 rounded-full" />
-                  <span class="bullet-text">{line}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="flex flex-wrap gap-2">
-              {experience.technologies.map((tech) => (
-                <TechTag name={tech} />
-              ))}
-            </div>
+<div>
+  {
+    EXPERIENCES.map((experience) => (
+      <div class="mb-12 flex flex-wrap lg:justify-center group" data-animate>
+        <div class="w-full lg:w-1/4">
+          <div class="flex items-center gap-2 mb-2 text-sm text-purple-400 transition-colors duration-200">
+            <Calendar className="w-4 h-4" />
+            <p>{experience.year}</p>
           </div>
         </div>
-      ))
-    }
-  </div>
+
+        <div class="w-full max-w-xl lg:w-3/4">
+          <div class="flex items-start mb-2">
+            <div class="flex flex-col gap-4">
+              <h6 class="flex items-center gap-2 font-semibold text-purple-400 transition-colors duration-200">
+                <Briefcase className="w-5 h-5 text-purple-400" />
+                {experience.role}
+              </h6>
+              <div class="flex items-center gap-2 text-sm text-purple-100">
+                <Building2 className="w-4 h-4" />
+                {experience.company}
+              </div>
+            </div>
+          </div>
+
+          <ul class="my-8 text-neutral-300 transition-colors duration-200 list-none">
+            {experience.description.map((line) => (
+              <li class="mb-2 pl-4 relative">
+                <span class="absolute left-0 top-2 w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                <span class="bullet-text">{line}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex flex-wrap gap-2">
+            {experience.technologies.map((tech) => (
+              <TechTag name={tech} />
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
 </div>
 
 <script>
