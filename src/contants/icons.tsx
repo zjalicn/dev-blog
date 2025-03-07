@@ -4,6 +4,9 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { SiDotnet } from "react-icons/si";
 import { FaNodeJs } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { SiCplusplus } from "react-icons/si";
+import { SiC } from "react-icons/si";
+import { BiLogoPython } from "react-icons/bi";
 import {
   FileTextIcon,
   MailIcon,
@@ -20,6 +23,9 @@ export const ICONS = {
   DOTNET: SiDotnet,
   NODEJS: FaNodeJs,
   POSTGRES: BiLogoPostgresql,
+  CPLUSPLUS: SiCplusplus,
+  C: SiC,
+  PYTHON: BiLogoPython,
   LINKEDIN: LinkedinIcon,
   GITHUB: GithubIcon,
   TWITTER: TwitterIcon,
