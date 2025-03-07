@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import { ExternalLink, BookIcon, VideoIcon } from "lucide-react";
-import { ICONS } from "@/contants/icons";
-import { PROJECTS } from "@/contants/content";
+import { ICONS } from "@/constants/icons";
+import { PROJECTS } from "@/constants/content";
 ---
 
 <BaseLayout title="Projects" description="My Recent Projects">
@@ -92,7 +92,7 @@ import { PROJECTS } from "@/contants/content";
                       rel="noopener noreferrer"
                       class="flex items-center gap-2 px-3 py-2 bg-neutral-800 rounded-lg text-white hover:bg-neutral-700 transition-colors duration-200 text-sm sm:text-base"
                     >
-                      <ICONS.GITHUB size={16} />
+                      <ICONS.SOCIAL.GITHUB size={16} />
                       <span>GitHub</span>
                     </a>
                   )}

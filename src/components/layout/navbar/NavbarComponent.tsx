@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
-import { NAV_LINKS, NAVBAR_LINKS } from "@/contants/nav";
-import PlanetIcon from "@/components/PlanetIcon";
+import { Menu, X } from "lucide-react";
+import { NAV_LINKS, NAVBAR_LINKS } from "@/constants/nav";
+import PlanetIcon from "./PlanetIcon";
 import LogoParticles from "./LogoParticles";
 
 const NavbarComponent = () => {
@@ -63,8 +63,8 @@ const NavbarComponent = () => {
         ))}
       </div>
 
-      {/* Social Links */}
-      <div className="flex items-center justify-center gap-4 text-2xl">
+      {/* Social Links - Desktop */}
+      <div className="hidden md:flex items-center justify-center gap-4 text-2xl">
         {NAVBAR_LINKS.map((link) => (
           <a
             key={link.key}
@@ -91,26 +91,58 @@ const NavbarComponent = () => {
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full Screen Overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-neutral-950 bg-opacity-95 md:hidden"
+          className="fixed inset-0 z-50 bg-neutral-950 bg-opacity-95 md:hidden flex items-center justify-center"
           onClick={handleOutsideClick}
         >
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            {NAV_LINKS.map((item) => (
-              <a
-                key={item.path}
-                href={item.path}
-                className={`text-xl transition-colors duration-200 ${
-                  currentPath === item.path
-                    ? "text-purple-400"
-                    : "text-neutral-300 hover:text-purple-400"
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Close button */}
+          <button
+            className="absolute top-6 right-6 text-neutral-300 hover:text-purple-400"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="flex flex-col items-center justify-center w-full max-w-sm px-4">
+            {/* Navigation Links */}
+            <div className="flex flex-col items-center space-y-6 w-full">
+              {NAV_LINKS.map((item) => (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  className={`text-xl transition-colors duration-200 ${
+                    currentPath === item.path
+                      ? "text-purple-400"
+                      : "text-neutral-300 hover:text-purple-400"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Separator */}
+            <div className="w-24 h-px bg-neutral-700 my-8"></div>
+
+            {/* Social Links - Mobile */}
+            <div className="flex items-center justify-center gap-6 w-full">
+              {NAVBAR_LINKS.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-300 hover:text-purple-400 transition-colors duration-200"
+                  aria-label={`${link.name} Profile`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <link.icon className="w-6 h-6" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}

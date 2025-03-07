@@ -1,30 +1,30 @@
 ---
-import { CONTACT_INFO, SOCIAL_LINKS } from "@/contants/contact";
-import { SITE_TITLE } from "@/contants/content";
-import { NAV_LINKS } from "@/contants/nav";
-import { ICONS } from "@/contants/icons";
+import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants/contact";
+import { SITE_TITLE } from "@/constants/content";
+import { NAV_LINKS } from "@/constants/nav";
+import { ICONS } from "@/constants/icons";
 
 const contactLinks: ContactLink[] = [
   {
     href: `mailto:${CONTACT_INFO.email}`,
-    icon: ICONS.MAIL,
+    icon: ICONS.SOCIAL.MAIL,
     text: CONTACT_INFO.email,
   },
   {
     href: SOCIAL_LINKS.linkedin,
-    icon: ICONS.LINKEDIN,
+    icon: ICONS.SOCIAL.LINKEDIN,
     text: "LinkedIn",
     newTab: true,
   },
   {
     href: SOCIAL_LINKS.github,
-    icon: ICONS.GITHUB,
+    icon: ICONS.SOCIAL.GITHUB,
     text: "GitHub",
     newTab: true,
   },
   {
     href: SOCIAL_LINKS.twitter,
-    icon: ICONS.TWITTER,
+    icon: ICONS.SOCIAL.TWITTER,
     text: "Twitter",
     newTab: true,
   },
@@ -35,7 +35,6 @@ const today = new Date();
 
 <footer class="text-white py-12 border-t border-neutral-800">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-    <!-- Contact Section -->
     <div class="mb-8" data-animate>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
         <!-- Left column: Contact Info -->
@@ -46,13 +45,17 @@ const today = new Date();
             Contact
           </h3>
 
-          <div class="flex items-center gap-3 text-gray-300">
-            <ICONS.LOCATION className="w-5 h-5 text-purple-400 flex-shrink-0" />
+          <div class="flex items-center gap-3 text-gray-300 ml-4">
+            <ICONS.SOCIAL.LOCATION
+              className="w-5 h-5 text-purple-400 flex-shrink-0"
+            />
             <span>{CONTACT_INFO.address}</span>
           </div>
 
-          <div class="flex items-center gap-3 text-gray-300">
-            <ICONS.MAIL className="w-5 h-5 text-purple-400 flex-shrink-0" />
+          <div class="flex items-center gap-3 text-gray-300 ml-4">
+            <ICONS.SOCIAL.MAIL
+              className="w-5 h-5 text-purple-400 flex-shrink-0"
+            />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               class="hover:text-purple-400 transition-colors break-all"
@@ -67,10 +70,10 @@ const today = new Date();
             >
               Connect
             </h3>
-            <div class="flex gap-6">
+            <div class="flex gap-6 ml-4">
               {
                 contactLinks
-                  .filter((link) => link.icon !== ICONS.MAIL)
+                  .filter((link) => link.icon !== ICONS.SOCIAL.MAIL)
                   .map(({ href, icon: Icon, text }) => (
                     <a
                       href={href}
@@ -113,7 +116,6 @@ const today = new Date();
       </div>
     </div>
 
-    <!-- Copyright -->
     <div
       class="text-center text-gray-500 text-sm pt-8 border-t border-neutral-800/50 mt-8"
     >
@@ -132,7 +134,6 @@ const today = new Date();
 </script>
 
 <style>
-  /* Animations for data-animate elements */
   [data-animate] {
     opacity: 0;
     transform: translateY(20px);
@@ -146,12 +147,10 @@ const today = new Date();
     transform: translateY(0);
   }
 
-  /* Override the a::after hover effect */
   a::after {
     display: none;
   }
 
-  /* Make the footer responsive on small screens */
   @media (max-width: 640px) {
     .container {
       padding-left: 1rem;

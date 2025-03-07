@@ -74,9 +74,8 @@ export const PROJECTS: Project[] = [
     title: "Astro Lift",
     subheader: "A lightweight static website solution for businesses",
     description: [
-      "Easily customizable static website boilerplate",
-      "Appointment booking page which integrates with Google Calendar",
-      "Google API Integration for location information and reviews",
+      "Easily customizable boilerplate with responsive modern UI",
+      "Google API Integration for Map and Reviews displays",
     ],
     image: "/projects/astro-lift.webp",
     tags: ["Astro", "React", "TypeScript"],

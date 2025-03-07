@@ -1,46 +1,47 @@
 ---
 import SectionTitle from "@/components/shared/SectionTitle.astro";
-import { ICONS } from "@/contants/icons";
+import { ICONS } from "@/constants/icons";
 import type { Technology } from "@/types/technology";
+
 const technologies: Technology[] = [
   {
     name: "React",
-    Icon: ICONS.REACT,
+    Icon: ICONS.LANGUAGES.REACT,
     color: "text-cyan-500",
     hoverColor: "hover:border-cyan-500",
     duration: 5,
   },
   {
     name: "Angular",
-    Icon: ICONS.ANGULAR,
+    Icon: ICONS.LANGUAGES.ANGULAR,
     color: "text-red-700",
     hoverColor: "hover:border-red-700",
     duration: 3,
   },
   {
     name: "TypeScript",
-    Icon: ICONS.TYPESCRIPT,
+    Icon: ICONS.LANGUAGES.TYPESCRIPT,
     color: "text-sky-500",
     hoverColor: "hover:border-sky-500",
     duration: 6,
   },
   {
     name: ".NET",
-    Icon: ICONS.DOTNET,
+    Icon: ICONS.LANGUAGES.DOTNET,
     color: "text-sky-500",
     hoverColor: "hover:border-sky-500",
     duration: 4,
   },
   {
     name: "Node.js",
-    Icon: ICONS.NODEJS,
+    Icon: ICONS.LANGUAGES.NODEJS,
     color: "text-green-500",
     hoverColor: "hover:border-green-500",
     duration: 5,
   },
   {
     name: "PostgreSQL",
-    Icon: ICONS.POSTGRES,
+    Icon: ICONS.LANGUAGES.POSTGRES,
     color: "text-sky-600",
     hoverColor: "hover:border-sky-600",
     duration: 3,
