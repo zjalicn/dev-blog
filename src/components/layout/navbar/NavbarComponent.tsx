@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { NAV_LINKS, NAVBAR_LINKS } from "@/contants/nav";
 import PlanetIcon from "@/components/PlanetIcon";
+import LogoParticles from "./LogoParticles";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,14 +32,18 @@ const NavbarComponent = () => {
 
   return (
     <nav className="mb-20 flex items-center justify-between py-6">
-      {/* Logo/Home link */}
-      <div className="flex flex-shrink-0 items-center">
-        <a href="/" className="flex items-center gap-2">
-          <PlanetIcon width="40" height="40" />
-          <p className="text-xl font-bold text-white hover:text-purple-400 transition-colors duration-200">
-            createdbyniko.
-          </p>
-        </a>
+      {/* Logo/Home link with contained particles */}
+      <div className="relative inline-block">
+        {/* This wrapper div controls the area where particles will appear */}
+        <div className="relative px-2 py-1">
+          <LogoParticles />
+          <a href="/" className="flex items-center gap-2 z-10 relative">
+            <PlanetIcon width="40" height="40" />
+            <p className="text-xl font-bold text-white hover:text-purple-400 transition-colors duration-200">
+              createdbyniko.
+            </p>
+          </a>
+        </div>
       </div>
 
       {/* Navigation Links */}

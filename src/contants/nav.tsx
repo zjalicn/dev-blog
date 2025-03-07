@@ -16,7 +16,7 @@ export const NAVBAR_LINKS = [
   },
   {
     key: "twitter",
-    name: "Twitter",
+    name: "Twitter/X",
     href: SOCIAL_LINKS.twitter,
     icon: ICONS.TWITTER,
   },
