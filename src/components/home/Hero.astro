@@ -82,14 +82,29 @@ const {
     }
   }
 
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
   }
 
   .animate-slide-in {
-    animation: slide-in 0.5s ease-out forwards;
+    animation:
+      slide-in 0.5s ease-out forwards,
+      gradient-shift 3s ease infinite 0.5s;
     animation-delay: 0.3s;
     opacity: 0;
+    background-size: 200% auto;
   }
 
   .animate-fade-up {
@@ -102,5 +117,10 @@ const {
     animation: fade-in 0.5s ease-out forwards;
     animation-delay: 0.9s;
     opacity: 0;
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
   }
 </style>
