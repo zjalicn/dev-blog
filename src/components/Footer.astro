@@ -33,55 +33,53 @@ const contactLinks: ContactLink[] = [
 const today = new Date();
 ---
 
-<footer class="text-white py-16 border-t border-neutral-800 max-w-5xl mx-auto">
-  <div class="container">
+<footer class="text-white py-12 border-t border-neutral-800">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
     <!-- Contact Section -->
-    <div class="mb-12 ml-16">
-      <div class="grid md:grid-cols-2 gap-8 w-full mx-auto" data-animate>
+    <div class="mb-8" data-animate>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
         <!-- Left column: Contact Info -->
-        <div
-          class="flex flex-col items-center md:items-start text-center md:text-left gap-4"
-        >
+        <div class="flex flex-col gap-6">
           <h3
             class="text-sm font-bold tracking-tight uppercase border-l-4 border-purple-400 pl-3 cursor-default"
           >
             Contact
           </h3>
 
-          <div class="flex items-center gap-3 text-gray-300 pl-4">
-            <ICONS.LOCATION className="w-5 h-5 text-purple-400" />
+          <div class="flex items-center gap-3 text-gray-300">
+            <ICONS.LOCATION className="w-5 h-5 text-purple-400 flex-shrink-0" />
             <span>{CONTACT_INFO.address}</span>
           </div>
 
-          <div class="flex items-center gap-3 text-gray-300 pl-4">
-            <ICONS.MAIL className="w-5 h-5 text-purple-400" />
+          <div class="flex items-center gap-3 text-gray-300">
+            <ICONS.MAIL className="w-5 h-5 text-purple-400 flex-shrink-0" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              class="hover:text-purple-400 transition-colors"
+              class="hover:text-purple-400 transition-colors break-all"
             >
               {CONTACT_INFO.email}
             </a>
           </div>
 
-          <div class="flex flex-col gap-4 w-full">
+          <div class="flex flex-col gap-4">
             <h3
-              class="text-sm font-bold tracking-tight uppercase border-l-4 border-purple-400 pl-3 cursor-default mt-4"
+              class="text-sm font-bold tracking-tight uppercase border-l-4 border-purple-400 pl-3 cursor-default mt-2"
             >
               Connect
             </h3>
-            <div class="flex gap-4 justify-center md:justify-start ml-3">
+            <div class="flex gap-6">
               {
                 contactLinks
                   .filter((link) => link.icon !== ICONS.MAIL)
                   .map(({ href, icon: Icon, text }) => (
                     <a
                       href={href}
-                      class="p-2 hover:text-purple-400 transition-colors"
+                      class="hover:text-purple-400 transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
                       title={text}
                     >
-                      <Icon class="w-5 h-5" />
+                      <Icon class="w-6 h-6" />
                       <span class="sr-only">{text}</span>
                     </a>
                   ))
@@ -91,19 +89,19 @@ const today = new Date();
         </div>
 
         <!-- Right column: Site Navigation -->
-        <div class="flex flex-col items-center md:items-start gap-6 ml-32">
+        <div class="flex flex-col gap-6">
           <h3
             class="text-sm font-bold tracking-tight uppercase border-l-4 border-purple-400 pl-3 cursor-default"
           >
             Navigation
           </h3>
 
-          <nav class="flex flex-col gap-4">
+          <nav class="grid grid-cols-1 sm:grid-cols-1 gap-3">
             {
               NAV_LINKS.map((item) => (
                 <a
                   href={item.path}
-                  class="text-gray-300 hover:text-purple-400 transition-colors text-lg flex items-center gap-2"
+                  class="text-gray-300 hover:text-purple-400 transition-colors flex items-center gap-2 group"
                 >
                   <span class="w-2 h-2 bg-purple-400 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {item.name}
@@ -116,10 +114,13 @@ const today = new Date();
     </div>
 
     <!-- Copyright -->
-    <div class="text-center text-gray-500 text-sm p-16">
+    <div
+      class="text-center text-gray-500 text-sm pt-8 border-t border-neutral-800/50 mt-8"
+    >
       &copy; {today.getFullYear()}
       {SITE_TITLE}
-      <br />
+      <br class="sm:hidden" />
+      <span class="hidden sm:inline"> — </span>
       All rights reserved.
     </div>
   </div>
@@ -148,5 +149,13 @@ const today = new Date();
   /* Override the a::after hover effect */
   a::after {
     display: none;
+  }
+
+  /* Make the footer responsive on small screens */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 </style>

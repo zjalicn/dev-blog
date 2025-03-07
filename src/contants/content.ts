@@ -93,7 +93,7 @@ export const PROJECTS: Project[] = [
       "File upload capabilities and storage",
     ],
     image: "/projects/saastarter.webp",
-    tags: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Stripe"],
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
     documentation: "https://saastarter.vercel.app/docs",
     github: "https://github.com/thxmos/saastarter",
     preview: "https://saas-starter-one.vercel.app",
